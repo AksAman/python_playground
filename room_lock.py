@@ -48,6 +48,9 @@ def enter_locked_room(person_name: str, lock: threading.Lock):
 
 def run(use_lock: bool = False):
     print(LINE)
+    global people_in_room
+    people_in_room = []
+
     lock = threading.Lock() if use_lock else None
     room_entry_method = enter_locked_room if use_lock else enter_open_room
     title = "WITH LOCK" if use_lock else "WITHOUT LOCK"
